@@ -1,0 +1,55 @@
+client:
+  name: basic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "Pastry-release.exe": ["<Pastry-release.exe>"]
+  "Pastry-release.module": ["<Pastry-release.module>"]
+  "main": ["<Pastry-release.exe>","<Pastry-release.module>"]
+  "test": ["<Pastry-release.exe>","<Pastry-release.module>"]
+default: "main"
+nodes:
+  "/Users/asray/copypaste/Sources/Pastry/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "<Pastry-release.exe>":
+    tool: phony
+    inputs: ["/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry"]
+    outputs: ["<Pastry-release.exe>"]
+
+  "<Pastry-release.module>":
+    tool: phony
+    inputs: ["/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/AppDelegate.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipItem.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipboardMonitor.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryStore.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryView.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HotKey.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/PanelController.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/Paster.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/main.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.swiftmodule"]
+    outputs: ["<Pastry-release.module>"]
+
+  "C.Pastry-release.exe":
+    tool: shell
+    inputs: ["/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/AppDelegate.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipItem.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipboardMonitor.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryStore.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryView.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HotKey.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/PanelController.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/Paster.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/main.swift.o"]
+    outputs: ["/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry"]
+    description: "Linking ./.build/arm64-apple-macosx/release/Pastry"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-g","-L","/Users/asray/copypaste/.build/arm64-apple-macosx/release","-o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry","-module-name","Pastry","-emit-executable","-Xlinker","-dead_strip","-Xlinker","-alias","-Xlinker","_Pastry_main","-Xlinker","_main","-Xlinker","-rpath","-Xlinker","@loader_path","@/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.product/Objects.LinkFileList","-target","arm64-apple-macosx13.0","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib"]
+
+  "C.Pastry-release.module":
+    tool: swift-compiler
+    inputs: ["/Users/asray/copypaste/Sources/Pastry/AppDelegate.swift","/Users/asray/copypaste/Sources/Pastry/ClipItem.swift","/Users/asray/copypaste/Sources/Pastry/ClipboardMonitor.swift","/Users/asray/copypaste/Sources/Pastry/HistoryStore.swift","/Users/asray/copypaste/Sources/Pastry/HistoryView.swift","/Users/asray/copypaste/Sources/Pastry/HotKey.swift","/Users/asray/copypaste/Sources/Pastry/PanelController.swift","/Users/asray/copypaste/Sources/Pastry/Paster.swift","/Users/asray/copypaste/Sources/Pastry/main.swift"]
+    outputs: ["/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/AppDelegate.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipItem.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipboardMonitor.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryStore.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryView.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HotKey.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/PanelController.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/Paster.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/main.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.swiftmodule"]
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "Pastry"
+    module-output-path: "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.swiftmodule"
+    import-paths: ["/Users/asray/copypaste/.build/arm64-apple-macosx/release"]
+    temps-path: "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build"
+    objects: ["/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/AppDelegate.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipItem.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipboardMonitor.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryStore.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryView.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HotKey.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/PanelController.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/Paster.swift.o","/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/main.swift.o"]
+    other-args: ["-target","arm64-apple-macosx13.0","-swift-version","5","-O","-g","-j8","-DSWIFT_PACKAGE","-module-cache-path","/Users/asray/copypaste/.build/arm64-apple-macosx/release/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","Pastry_main","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-I","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-L","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib","-Xcc","-isysroot","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk","-Xcc","-F","-Xcc","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Xcc","-fPIC","-package-name","copypaste"]
+    sources: ["/Users/asray/copypaste/Sources/Pastry/AppDelegate.swift","/Users/asray/copypaste/Sources/Pastry/ClipItem.swift","/Users/asray/copypaste/Sources/Pastry/ClipboardMonitor.swift","/Users/asray/copypaste/Sources/Pastry/HistoryStore.swift","/Users/asray/copypaste/Sources/Pastry/HistoryView.swift","/Users/asray/copypaste/Sources/Pastry/HotKey.swift","/Users/asray/copypaste/Sources/Pastry/PanelController.swift","/Users/asray/copypaste/Sources/Pastry/Paster.swift","/Users/asray/copypaste/Sources/Pastry/main.swift"]
+    is-library: false
+    enable-whole-module-optimization: true
+    num-threads: 8
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/asray/copypaste/Sources/Pastry/","/Users/asray/copypaste/Package.swift","/Users/asray/copypaste/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

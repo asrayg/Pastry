@@ -1,0 +1,244 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.Pastry-release.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "importPath" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/Sources/Pastry/AppDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/Sources/Pastry/ClipItem.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/Sources/Pastry/ClipboardMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/Sources/Pastry/HistoryStore.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/Sources/Pastry/HistoryView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/Sources/Pastry/HotKey.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/Sources/Pastry/PanelController.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/Sources/Pastry/Paster.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/Sources/Pastry/main.swift"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "Pastry",
+      "moduleOutputPath" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.swiftmodule",
+      "objects" : [
+        "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/AppDelegate.swift.o",
+        "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipItem.swift.o",
+        "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipboardMonitor.swift.o",
+        "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryStore.swift.o",
+        "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryView.swift.o",
+        "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HotKey.swift.o",
+        "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/PanelController.swift.o",
+        "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/Paster.swift.o",
+        "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/main.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-swift-version",
+        "5",
+        "-O",
+        "-g",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-module-cache-path",
+        "/Users/asray/copypaste/.build/arm64-apple-macosx/release/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "Pastry_main",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-package-name",
+        "copypaste"
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/AppDelegate.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipItem.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipboardMonitor.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryStore.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HotKey.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/PanelController.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/Paster.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/main.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/asray/copypaste/Sources/Pastry/AppDelegate.swift",
+        "/Users/asray/copypaste/Sources/Pastry/ClipItem.swift",
+        "/Users/asray/copypaste/Sources/Pastry/ClipboardMonitor.swift",
+        "/Users/asray/copypaste/Sources/Pastry/HistoryStore.swift",
+        "/Users/asray/copypaste/Sources/Pastry/HistoryView.swift",
+        "/Users/asray/copypaste/Sources/Pastry/HotKey.swift",
+        "/Users/asray/copypaste/Sources/Pastry/PanelController.swift",
+        "/Users/asray/copypaste/Sources/Pastry/Paster.swift",
+        "/Users/asray/copypaste/Sources/Pastry/main.swift"
+      ],
+      "tempsPath" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build",
+      "wholeModuleOptimization" : true
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "Pastry" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "Pastry",
+      "-package-name",
+      "copypaste",
+      "-whole-module-optimization",
+      "-num-threads",
+      "8",
+      "-c",
+      "/Users/asray/copypaste/Sources/Pastry/AppDelegate.swift",
+      "/Users/asray/copypaste/Sources/Pastry/ClipItem.swift",
+      "/Users/asray/copypaste/Sources/Pastry/ClipboardMonitor.swift",
+      "/Users/asray/copypaste/Sources/Pastry/HistoryStore.swift",
+      "/Users/asray/copypaste/Sources/Pastry/HistoryView.swift",
+      "/Users/asray/copypaste/Sources/Pastry/HotKey.swift",
+      "/Users/asray/copypaste/Sources/Pastry/PanelController.swift",
+      "/Users/asray/copypaste/Sources/Pastry/Paster.swift",
+      "/Users/asray/copypaste/Sources/Pastry/main.swift",
+      "-I",
+      "/Users/asray/copypaste/.build/arm64-apple-macosx/release",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-swift-version",
+      "5",
+      "-O",
+      "-g",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-module-cache-path",
+      "/Users/asray/copypaste/.build/arm64-apple-macosx/release/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "Pastry_main",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-package-name",
+      "copypaste",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "Pastry" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  }
+}
