@@ -35,6 +35,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/asray/copypaste/Sources/Pastry/ColorScheme.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/asray/copypaste/Sources/Pastry/HistoryStore.swift"
         },
         {
@@ -69,6 +73,7 @@
         "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/AppDelegate.swift.o",
         "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipItem.swift.o",
         "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipboardMonitor.swift.o",
+        "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ColorScheme.swift.o",
         "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryStore.swift.o",
         "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryView.swift.o",
         "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HotKey.swift.o",
@@ -129,6 +134,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ColorScheme.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryStore.swift.o"
         },
         {
@@ -164,6 +173,7 @@
         "/Users/asray/copypaste/Sources/Pastry/AppDelegate.swift",
         "/Users/asray/copypaste/Sources/Pastry/ClipItem.swift",
         "/Users/asray/copypaste/Sources/Pastry/ClipboardMonitor.swift",
+        "/Users/asray/copypaste/Sources/Pastry/ColorScheme.swift",
         "/Users/asray/copypaste/Sources/Pastry/HistoryStore.swift",
         "/Users/asray/copypaste/Sources/Pastry/HistoryView.swift",
         "/Users/asray/copypaste/Sources/Pastry/HotKey.swift",
@@ -193,6 +203,7 @@
       "/Users/asray/copypaste/Sources/Pastry/AppDelegate.swift",
       "/Users/asray/copypaste/Sources/Pastry/ClipItem.swift",
       "/Users/asray/copypaste/Sources/Pastry/ClipboardMonitor.swift",
+      "/Users/asray/copypaste/Sources/Pastry/ColorScheme.swift",
       "/Users/asray/copypaste/Sources/Pastry/HistoryStore.swift",
       "/Users/asray/copypaste/Sources/Pastry/HistoryView.swift",
       "/Users/asray/copypaste/Sources/Pastry/HotKey.swift",

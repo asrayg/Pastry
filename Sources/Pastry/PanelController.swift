@@ -1,6 +1,5 @@
 import AppKit
 import SwiftUI
-import ApplicationServices
 
 final class PanelViewModel: ObservableObject {
     @Published var selection: Int = 0

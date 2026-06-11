@@ -19,6 +19,11 @@
     "swiftmodule": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipboardMonitor~partial.swiftmodule",
     "swift-dependencies": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ClipboardMonitor.swiftdeps"
   },
+  "/Users/asray/copypaste/Sources/Pastry/ColorScheme.swift": {
+    "object": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ColorScheme.swift.o",
+    "swiftmodule": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ColorScheme~partial.swiftmodule",
+    "swift-dependencies": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ColorScheme.swiftdeps"
+  },
   "/Users/asray/copypaste/Sources/Pastry/HistoryStore.swift": {
     "object": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryStore.swift.o",
     "swiftmodule": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HistoryStore~partial.swiftmodule",

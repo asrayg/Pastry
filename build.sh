@@ -27,6 +27,8 @@ codesign --force --sign "Apple Development: Asray Gopa (WA35DM5HM3)" "$APP"
 
 # Install to /Applications so the permission is tied to a stable path.
 pkill -f "Applications/Pastry.app/Contents/MacOS/Pastry" 2>/dev/null || true
+sleep 0.5
+rm -rf /Applications/Pastry.app
 cp -R "$APP" /Applications/Pastry.app
 echo "Installed /Applications/Pastry.app"
 open /Applications/Pastry.app

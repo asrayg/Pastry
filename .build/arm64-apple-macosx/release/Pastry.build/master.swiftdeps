@@ -1,15 +1,16 @@
 version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
 options: "aacb02dd00df5cc6d7ca121849eb1b0a6af35a1eeac0cb4a51415b8d31226fa3"
-build_start_time: [1781137902, 260851000]
-build_end_time: [1781137905, 606239000]
+build_start_time: [1781158442, 856228000]
+build_end_time: [1781158461, 59905000]
 inputs:
   "/Users/asray/copypaste/Sources/Pastry/AppDelegate.swift": [1781137895, 751141063]
   "/Users/asray/copypaste/Sources/Pastry/ClipItem.swift": [1781074001, 79421902]
   "/Users/asray/copypaste/Sources/Pastry/ClipboardMonitor.swift": [1781076197, 990772103]
+  "/Users/asray/copypaste/Sources/Pastry/ColorScheme.swift": [1781157839, 251334461]
   "/Users/asray/copypaste/Sources/Pastry/HistoryStore.swift": [1781074599, 723965291]
-  "/Users/asray/copypaste/Sources/Pastry/HistoryView.swift": [1781074565, 788592156]
+  "/Users/asray/copypaste/Sources/Pastry/HistoryView.swift": [1781157880, 615619221]
   "/Users/asray/copypaste/Sources/Pastry/HotKey.swift": [1781074015, 509883268]
-  "/Users/asray/copypaste/Sources/Pastry/PanelController.swift": [1781077482, 871461719]
+  "/Users/asray/copypaste/Sources/Pastry/PanelController.swift": [1781158431, 699780995]
   "/Users/asray/copypaste/Sources/Pastry/Paster.swift": [1781137779, 425624716]
   "/Users/asray/copypaste/Sources/Pastry/ScreenshotWatcher.swift": [1781077069, 747718350]
   "/Users/asray/copypaste/Sources/Pastry/main.swift": [1781074091, 992522833]
