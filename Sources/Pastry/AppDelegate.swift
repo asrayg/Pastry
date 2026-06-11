@@ -4,9 +4,11 @@ import ServiceManagement
 final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     private var statusItem: NSStatusItem!
     private var loginItem: NSMenuItem!
+    private var accessibilityItem: NSMenuItem!
 
     private let store = HistoryStore()
     private let hotKey = HotKey()
+    private let screenshotWatcher = ScreenshotWatcher()
     private var monitor: ClipboardMonitor!
     private var panelController: PanelController!
 
@@ -15,6 +17,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         panelController = PanelController(store: store, monitor: monitor)
 
         monitor.start()
+        screenshotWatcher.start()
         hotKey.handler = { [weak self] in self?.panelController.toggle() }
         hotKey.register()
 
@@ -49,6 +52,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
         menu.addItem(.separator())
 
+        accessibilityItem = NSMenuItem(title: "Enable Auto-Paste…", action: #selector(openAccessibilitySettings), keyEquivalent: "")
+        accessibilityItem.target = self
+        menu.addItem(accessibilityItem)
+
+        menu.addItem(.separator())
+
         loginItem = NSMenuItem(title: "Start at Login", action: #selector(toggleLoginItem), keyEquivalent: "")
         loginItem.target = self
         menu.addItem(loginItem)
@@ -66,6 +75,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     func menuWillOpen(_ menu: NSMenu) {
         loginItem.state = SMAppService.mainApp.status == .enabled ? .on : .off
+
+        if AXIsProcessTrusted() {
+            accessibilityItem.title = "Auto-Paste: On ✓"
+            accessibilityItem.action = nil // greyed out when already granted
+        } else {
+            accessibilityItem.title = "Enable Auto-Paste… (required)"
+            accessibilityItem.action = #selector(openAccessibilitySettings)
+        }
     }
 
     @objc private func showHistory() {
@@ -93,10 +110,33 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
     }
 
+    @objc private func openAccessibilitySettings() {
+        let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!
+        NSWorkspace.shared.open(url)
+    }
+
     private func promptForAccessibilityIfNeeded() {
-        // Needed to synthesize the ⌘V keystroke. Without it the app still
-        // records history and copies the chosen item — it just won't auto-paste.
-        let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true] as CFDictionary
-        AXIsProcessTrustedWithOptions(options)
+        guard !AXIsProcessTrusted() else { return }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            NSApp.activate(ignoringOtherApps: true)
+            let alert = NSAlert()
+            alert.messageText = "Pastry needs Accessibility access to auto-paste"
+            alert.informativeText = """
+                Without it, Pastry copies your selection to the clipboard but you'll need to press ⌘V yourself.
+
+                To enable:
+                1. Click "Open Settings" below
+                2. Click the lock to make changes
+                3. Find Pastry in the list and turn it ON
+                4. If Pastry isn't listed, click + and navigate to /Applications/Pastry.app
+                """
+            alert.addButton(withTitle: "Open Settings")
+            alert.addButton(withTitle: "Not Now")
+            alert.alertStyle = .warning
+            if alert.runModal() == .alertFirstButtonReturn {
+                self.openAccessibilitySettings()
+            }
+        }
     }
 }

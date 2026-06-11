@@ -1,5 +1,6 @@
 import AppKit
 import SwiftUI
+import ApplicationServices
 
 final class PanelViewModel: ObservableObject {
     @Published var selection: Int = 0
@@ -26,6 +27,8 @@ final class PanelController {
     private let monitor: ClipboardMonitor
     private let vm = PanelViewModel()
     private var panel: HistoryPanel?
+    // The app that was frontmost when the panel opened — Cmd+V must go there.
+    private var sourceApp: NSRunningApplication?
 
     init(store: HistoryStore, monitor: ClipboardMonitor) {
         self.store = store
@@ -41,6 +44,7 @@ final class PanelController {
     }
 
     func show() {
+        sourceApp = NSWorkspace.shared.frontmostApplication
         let panel = ensurePanel()
         vm.selection = 0
         vm.presentedAt = Date()
@@ -110,8 +114,9 @@ final class PanelController {
     // MARK: - Actions
 
     private func paste(_ item: ClipItem) {
+        let target = sourceApp
         hide()
-        Paster.paste(item, monitor: monitor)
+        Paster.paste(item, monitor: monitor, into: target)
     }
 
     private func delete(_ item: ClipItem) {

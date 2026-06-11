@@ -1,0 +1,60 @@
+{
+  "" : {
+    "const-values" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/Pastry-master.swiftconstvalues",
+    "dependencies" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/Pastry-master.d",
+    "diagnostics" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/Pastry-master.dia",
+    "emit-module-dependencies" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/Pastry-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/Pastry-master-emit-module.dia",
+    "swift-dependencies" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/Pastry-master.swiftdeps"
+  },
+  "/Users/asray/copypaste/Sources/Pastry/AppDelegate.swift" : {
+    "index-unit-output-path" : "/Pastry.build/Release/Pastry.build/Objects-normal/arm64/AppDelegate.o",
+    "llvm-bc" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/AppDelegate.bc",
+    "object" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/AppDelegate.o"
+  },
+  "/Users/asray/copypaste/Sources/Pastry/ClipboardMonitor.swift" : {
+    "index-unit-output-path" : "/Pastry.build/Release/Pastry.build/Objects-normal/arm64/ClipboardMonitor.o",
+    "llvm-bc" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/ClipboardMonitor.bc",
+    "object" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/ClipboardMonitor.o"
+  },
+  "/Users/asray/copypaste/Sources/Pastry/ClipItem.swift" : {
+    "index-unit-output-path" : "/Pastry.build/Release/Pastry.build/Objects-normal/arm64/ClipItem.o",
+    "llvm-bc" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/ClipItem.bc",
+    "object" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/ClipItem.o"
+  },
+  "/Users/asray/copypaste/Sources/Pastry/HistoryStore.swift" : {
+    "index-unit-output-path" : "/Pastry.build/Release/Pastry.build/Objects-normal/arm64/HistoryStore.o",
+    "llvm-bc" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/HistoryStore.bc",
+    "object" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/HistoryStore.o"
+  },
+  "/Users/asray/copypaste/Sources/Pastry/HistoryView.swift" : {
+    "index-unit-output-path" : "/Pastry.build/Release/Pastry.build/Objects-normal/arm64/HistoryView.o",
+    "llvm-bc" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/HistoryView.bc",
+    "object" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/HistoryView.o"
+  },
+  "/Users/asray/copypaste/Sources/Pastry/HotKey.swift" : {
+    "index-unit-output-path" : "/Pastry.build/Release/Pastry.build/Objects-normal/arm64/HotKey.o",
+    "llvm-bc" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/HotKey.bc",
+    "object" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/HotKey.o"
+  },
+  "/Users/asray/copypaste/Sources/Pastry/main.swift" : {
+    "index-unit-output-path" : "/Pastry.build/Release/Pastry.build/Objects-normal/arm64/main.o",
+    "llvm-bc" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/main.bc",
+    "object" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/main.o"
+  },
+  "/Users/asray/copypaste/Sources/Pastry/PanelController.swift" : {
+    "index-unit-output-path" : "/Pastry.build/Release/Pastry.build/Objects-normal/arm64/PanelController.o",
+    "llvm-bc" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/PanelController.bc",
+    "object" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/PanelController.o"
+  },
+  "/Users/asray/copypaste/Sources/Pastry/Paster.swift" : {
+    "index-unit-output-path" : "/Pastry.build/Release/Pastry.build/Objects-normal/arm64/Paster.o",
+    "llvm-bc" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/Paster.bc",
+    "object" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/Paster.o"
+  },
+  "/Users/asray/copypaste/Sources/Pastry/ScreenshotWatcher.swift" : {
+    "index-unit-output-path" : "/Pastry.build/Release/Pastry.build/Objects-normal/arm64/ScreenshotWatcher.o",
+    "llvm-bc" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/ScreenshotWatcher.bc",
+    "object" : "/Users/asray/copypaste/build/DerivedData/Build/Intermediates.noindex/Pastry.build/Release/Pastry.build/Objects-normal/arm64/ScreenshotWatcher.o"
+  }
+}

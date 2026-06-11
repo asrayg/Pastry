@@ -44,6 +44,11 @@
     "swiftmodule": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/Paster~partial.swiftmodule",
     "swift-dependencies": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/Paster.swiftdeps"
   },
+  "/Users/asray/copypaste/Sources/Pastry/ScreenshotWatcher.swift": {
+    "object": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ScreenshotWatcher.swift.o",
+    "swiftmodule": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ScreenshotWatcher~partial.swiftmodule",
+    "swift-dependencies": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ScreenshotWatcher.swiftdeps"
+  },
   "/Users/asray/copypaste/Sources/Pastry/main.swift": {
     "object": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/main.swift.o",
     "swiftmodule": "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/main~partial.swiftmodule",

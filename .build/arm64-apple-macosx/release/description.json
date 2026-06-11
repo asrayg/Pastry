@@ -55,6 +55,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/asray/copypaste/Sources/Pastry/ScreenshotWatcher.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/asray/copypaste/Sources/Pastry/main.swift"
         }
       ],
@@ -70,6 +74,7 @@
         "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/HotKey.swift.o",
         "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/PanelController.swift.o",
         "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/Paster.swift.o",
+        "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ScreenshotWatcher.swift.o",
         "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/main.swift.o"
       ],
       "otherArguments" : [
@@ -144,6 +149,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/ScreenshotWatcher.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build/main.swift.o"
         },
         {
@@ -160,6 +169,7 @@
         "/Users/asray/copypaste/Sources/Pastry/HotKey.swift",
         "/Users/asray/copypaste/Sources/Pastry/PanelController.swift",
         "/Users/asray/copypaste/Sources/Pastry/Paster.swift",
+        "/Users/asray/copypaste/Sources/Pastry/ScreenshotWatcher.swift",
         "/Users/asray/copypaste/Sources/Pastry/main.swift"
       ],
       "tempsPath" : "/Users/asray/copypaste/.build/arm64-apple-macosx/release/Pastry.build",
@@ -188,6 +198,7 @@
       "/Users/asray/copypaste/Sources/Pastry/HotKey.swift",
       "/Users/asray/copypaste/Sources/Pastry/PanelController.swift",
       "/Users/asray/copypaste/Sources/Pastry/Paster.swift",
+      "/Users/asray/copypaste/Sources/Pastry/ScreenshotWatcher.swift",
       "/Users/asray/copypaste/Sources/Pastry/main.swift",
       "-I",
       "/Users/asray/copypaste/.build/arm64-apple-macosx/release",

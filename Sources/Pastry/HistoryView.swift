@@ -1,26 +1,26 @@
 import SwiftUI
 import AppKit
 
-enum Theme {
-    static let gradient = LinearGradient(
-        colors: [Color(red: 1.0, green: 0.62, blue: 0.42), Color(red: 0.94, green: 0.35, blue: 0.55)],
-        startPoint: .topLeading,
-        endPoint: .bottomTrailing
-    )
-    static let accent = Color(red: 0.96, green: 0.45, blue: 0.50)
-}
-
 struct HistoryView: View {
     @ObservedObject var store: HistoryStore
     @ObservedObject var vm: PanelViewModel
+    @ObservedObject private var themeStore = ThemeStore.shared
     let onPaste: (ClipItem) -> Void
     let onTogglePin: (ClipItem) -> Void
     let onDelete: (ClipItem) -> Void
     let onClearAll: () -> Void
 
+    @State private var showingThemePicker = false
+
+    private var theme: PastryTheme { themeStore.current }
+
     var body: some View {
         VStack(spacing: 0) {
             header
+            if showingThemePicker {
+                themePicker
+                    .transition(.move(edge: .top).combined(with: .opacity))
+            }
             Divider().opacity(0.5)
             if store.items.isEmpty {
                 emptyState
@@ -30,6 +30,7 @@ struct HistoryView: View {
             Divider().opacity(0.5)
             footer
         }
+        .animation(.easeInOut(duration: 0.18), value: showingThemePicker)
         .frame(width: PanelController.panelSize.width, height: PanelController.panelSize.height)
         .background(VisualEffectBackground())
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
@@ -45,7 +46,7 @@ struct HistoryView: View {
         HStack(spacing: 7) {
             Image(systemName: "doc.on.clipboard.fill")
                 .font(.system(size: 12, weight: .semibold))
-                .foregroundStyle(Theme.gradient)
+                .foregroundStyle(theme.gradient)
             Text("Pastry")
                 .font(.system(size: 13, weight: .bold, design: .rounded))
             Spacer()
@@ -65,10 +66,57 @@ struct HistoryView: View {
             .foregroundColor(hasUnpinned ? .primary : .secondary)
             .disabled(!hasUnpinned)
             .help("Remove everything except pinned items")
+
+            Button {
+                showingThemePicker.toggle()
+            } label: {
+                Image(systemName: showingThemePicker ? "xmark.circle.fill" : "paintpalette")
+                    .font(.system(size: 12))
+                    .foregroundColor(showingThemePicker ? theme.accent : .secondary)
+            }
+            .buttonStyle(.plain)
+            .help("Change color scheme")
         }
         .padding(.horizontal, 14)
         .padding(.top, 12)
         .padding(.bottom, 10)
+    }
+
+    private var themePicker: some View {
+        HStack(spacing: 10) {
+            ForEach(PastryTheme.allCases) { t in
+                Button {
+                    themeStore.current = t
+                } label: {
+                    VStack(spacing: 4) {
+                        ZStack {
+                            Circle()
+                                .fill(t.gradient)
+                                .frame(width: 28, height: 28)
+                            if themeStore.current == t {
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 10, weight: .bold))
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        .overlay(
+                            Circle()
+                                .strokeBorder(themeStore.current == t
+                                              ? t.accent : Color.primary.opacity(0.15),
+                                              lineWidth: themeStore.current == t ? 2 : 1)
+                        )
+                        Text(t.rawValue)
+                            .font(.system(size: 9))
+                            .foregroundColor(themeStore.current == t ? t.accent : .secondary)
+                    }
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 8)
+        .frame(maxWidth: .infinity)
+        .background(Color.primary.opacity(0.04))
     }
 
     private var emptyState: some View {
@@ -76,7 +124,7 @@ struct HistoryView: View {
             Spacer()
             Image(systemName: "doc.on.clipboard")
                 .font(.system(size: 36, weight: .light))
-                .foregroundStyle(Theme.gradient)
+                .foregroundStyle(theme.gradient)
             Text("Nothing here yet")
                 .font(.system(size: 13, weight: .semibold))
             Text("Copy some text or images and they'll\nshow up here, ready to paste anytime.")
@@ -97,6 +145,7 @@ struct HistoryView: View {
                         ItemRow(
                             item: item,
                             selected: index == vm.selection,
+                            theme: theme,
                             onPaste: { onPaste(item) },
                             onTogglePin: { onTogglePin(item) },
                             onDelete: { onDelete(item) }
@@ -141,10 +190,7 @@ private struct KeyHint: View {
                 .font(.system(size: 9, weight: .semibold))
                 .padding(.horizontal, 4)
                 .padding(.vertical, 1.5)
-                .background(
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(Color.primary.opacity(0.08))
-                )
+                .background(RoundedRectangle(cornerRadius: 4).fill(Color.primary.opacity(0.08)))
             Text(label)
                 .font(.system(size: 10))
                 .foregroundColor(.secondary)
@@ -155,6 +201,7 @@ private struct KeyHint: View {
 private struct ItemRow: View {
     let item: ClipItem
     let selected: Bool
+    let theme: PastryTheme
     let onPaste: () -> Void
     let onTogglePin: () -> Void
     let onDelete: () -> Void
@@ -184,12 +231,12 @@ private struct ItemRow: View {
         .background(
             RoundedRectangle(cornerRadius: 9, style: .continuous)
                 .fill(selected
-                      ? Theme.accent.opacity(0.16)
+                      ? theme.accent.opacity(0.16)
                       : hovering ? Color.primary.opacity(0.06) : Color.clear)
         )
         .overlay(
             RoundedRectangle(cornerRadius: 9, style: .continuous)
-                .strokeBorder(selected ? Theme.accent.opacity(0.6) : Color.clear, lineWidth: 1)
+                .strokeBorder(selected ? theme.accent.opacity(0.6) : Color.clear, lineWidth: 1)
         )
         .contentShape(Rectangle())
         .onTapGesture(perform: onPaste)
@@ -209,15 +256,15 @@ private struct ItemRow: View {
 
     private var badgeIcon: String {
         switch item.content {
-        case .text: return "text.alignleft"
+        case .text:  return "text.alignleft"
         case .image: return "photo"
         }
     }
 
     private var badgeColor: Color {
         switch item.content {
-        case .text: return Color(red: 0.98, green: 0.55, blue: 0.35)
-        case .image: return Color(red: 0.85, green: 0.35, blue: 0.65)
+        case .text:  return theme.textBadgeColor
+        case .image: return theme.imageBadgeColor
         }
     }
 
@@ -254,7 +301,7 @@ private struct ItemRow: View {
             if item.pinned {
                 Image(systemName: "pin.fill")
                     .font(.system(size: 8))
-                    .foregroundColor(Theme.accent)
+                    .foregroundColor(theme.accent)
             }
             Text(timeText)
             Text("·")
@@ -287,7 +334,7 @@ private struct ItemRow: View {
             Button(action: onTogglePin) {
                 Image(systemName: item.pinned ? "pin.fill" : "pin")
                     .font(.system(size: 11))
-                    .foregroundColor(item.pinned ? Theme.accent : .secondary)
+                    .foregroundColor(item.pinned ? theme.accent : .secondary)
             }
             .buttonStyle(.plain)
             .help(item.pinned ? "Unpin" : "Pin")
@@ -312,6 +359,5 @@ private struct VisualEffectBackground: NSViewRepresentable {
         view.state = .active
         return view
     }
-
     func updateNSView(_ nsView: NSVisualEffectView, context: Context) {}
 }

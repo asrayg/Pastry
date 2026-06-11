@@ -1,114 +1,75 @@
-# Submitting Pastry to the Mac App Store
+# Pastry — Mac App Store submission
 
-A start-to-finish guide. Budget a weekend for the first submission; updates
-after that take minutes.
+Almost everything is already set up in this repo. Here's what exists, the one
+thing you must do once, and the release routine.
 
-## 0. Read this first: the auto-paste caveat
+## Already done ✅
 
-The Mac App Store requires **App Sandbox**. Pastry's clipboard *watching* is
-fine sandboxed (no entitlement needed), and so is the global hotkey. The one
-sensitive piece is **auto-paste**: Pastry synthesizes ⌘V with `CGEventPost`,
-which only works after the user grants **Accessibility** permission.
+- **Xcode project** — `Pastry.xcodeproj`, wired to the sources, `Info.plist`,
+  the app icon, and a shared scheme. Builds and signs with your team
+  (`L6LUXM357X`) using automatic signing.
+- **App Sandbox** — `Pastry.entitlements` (required for the App Store);
+  verified the built app is sandboxed + hardened runtime.
+- **Bundle config** — `com.asray.pastry`, category Productivity, version 1.0,
+  `ITSAppUsesNonExemptEncryption = NO` (skips export-compliance questions),
+  agent app (no Dock icon).
+- **Icon** — generated `.icns` in the bundle; `Resources/AppIcon-1024.png` is
+  the 1024px master for App Store Connect.
+- **Archive script** — `./archive.sh` archives and exports a store-ready
+  `build/appstore/Pastry.pkg`.
 
-This is allowed — established App Store clipboard managers (Paste, PasteNow)
-do exactly this — but it's the part reviewers look at. Two rules keep you safe:
+## One-time setup (you, ~1 minute)
 
-1. **Degrade gracefully.** If permission isn't granted, the app must still
-   work (Pastry already does: it copies the item and the user pastes manually).
-2. **Explain it.** In the App Review notes, say exactly why you need
-   Accessibility and what happens without it.
+Xcode has no Apple ID session on this Mac, which is the only reason
+`./archive.sh` can't finish — it needs to create your **Mac Installer
+Distribution** certificate (it said: "can be created silently" but
+"did not find session").
 
-If review ever pushes back, ship v1 with auto-paste off by default ("Press ⌘V
-after picking an item") and enable it as an opt-in setting.
+1. Open Xcode → **Settings → Accounts → +** → sign in with your developer Apple ID.
+2. Run `./archive.sh` again. With a session available it will create the
+   installer certificate, register the `com.asray.pastry` App ID, and generate
+   the provisioning profile automatically (`-allowProvisioningUpdates`).
 
-## 1. Enroll in the Apple Developer Program
+If the command line still balks, the GUI always works: open `Pastry.xcodeproj`,
+Product → **Archive**, then in Organizer: **Distribute App → App Store Connect**.
 
-- https://developer.apple.com/programs/ — $99/year, personal or company.
-- Use the Apple ID you want to publish under. Approval is usually < 48h.
+## Create the app record (App Store Connect, ~5 minutes)
 
-## 2. Reserve the app in App Store Connect
+1. https://appstoreconnect.apple.com → My Apps → **+ New App**.
+2. Platform macOS, name **Pastry** (if taken: "Pastry — Clipboard History"),
+   bundle ID `com.asray.pastry`, SKU `pastry-001`.
 
-- https://appstoreconnect.apple.com → My Apps → **+ → New App**.
-- Platform: macOS. Name: **Pastry** — names are first-come-first-served; if
-  taken, try "Pastry — Clipboard History", "Pastry Clipboard", or fall back to
-  another name entirely.
-- Bundle ID: register `com.asray.pastry` first at
-  https://developer.apple.com/account/resources/identifiers (type: App IDs → App).
-- SKU: anything unique, e.g. `pastry-001`. Primary language, then Create.
+## Listing assets
 
-## 3. Wrap the code in an Xcode project
-
-The SwiftPM build in this repo is great for development, but archiving and
-uploading is far easier from Xcode:
-
-1. Xcode → File → New → Project → **macOS → App**. Product name `Pastry`,
-   bundle id `com.asray.pastry`, interface SwiftUI, language Swift.
-2. Delete the template `PastryApp.swift` and `ContentView.swift`.
-3. Drag everything in `Sources/Pastry/` into the project (copy items).
-   `main.swift` is the entry point — no `@main` struct needed.
-4. Target → Info tab, add:
-   - `Application is agent (UIElement)` = YES (this is `LSUIElement` — no Dock icon)
-   - `ITSAppUsesNonExemptEncryption` = NO (skips export-compliance questions)
-5. Target → Signing & Capabilities:
-   - Team: your developer team, "Automatically manage signing" on.
-   - **App Sandbox** capability must be present (it is by default). Pastry
-     needs **no** extra sandbox entitlements — no network, no file access.
-6. Replace `AppIcon` in Assets.xcassets — drag `Resources/AppIcon-1024.png`
-   into the 1024pt slot (Xcode 14+ can use a single 1024 image: set the asset
-   to "Single Size").
-7. General tab: set Version `1.0`, Build `1`, Category **Productivity**,
-   minimum deployment macOS 13.0.
-8. Build and run once. Re-grant Accessibility to this new build
-   (System Settings → Privacy & Security → Accessibility) and verify:
-   copy a few things, ⌘⇧V, paste, pin, clear all.
-
-## 4. Prepare the listing assets
-
-- **Icon**: comes from the app bundle automatically (`AppIcon-1024.png` is the master).
-- **Screenshots**: at least one, in an accepted size — 1280×800, 1440×900,
-  2560×1600, or 2880×1800. Open the panel over a nice desktop, `⌘⇧5` to
-  capture, then resize/pad to an exact accepted size. 3–5 screenshots showing
-  the panel, pinning, and image history is ideal.
-- **Description** (draft):
+- **Screenshots**: 1–5 images at 1280×800, 1440×900, 2560×1600, or 2880×1800.
+  Open the panel (⌘⇧V) over a clean desktop, capture with ⌘⇧5, then resize:
+  `sips -z 1800 2880 shot.png --out shot-store.png`
+- **Description** (ready to paste):
 
   > Pastry brings Windows-style clipboard history to your Mac. Press ⌘⇧V
-  > anywhere to see everything you've copied — text and images — and paste
-  > any of it back with a click or a keystroke. Pin the things you reuse
-  > daily; they survive Clear All and never expire. Pastry lives in your
-  > menu bar, stays out of your way, and never sends your clipboard anywhere:
-  > everything is stored locally on your Mac.
+  > anywhere to see everything you've copied — text, images, and screenshots —
+  > and paste any of it back with a click or a keystroke. Take a screenshot
+  > and it's instantly ready to paste. Pin the things you reuse daily; they
+  > survive Clear All and never expire. Pastry lives in your menu bar, stays
+  > out of your way, and never sends your clipboard anywhere: everything is
+  > stored locally on your Mac.
 
-- **Keywords**: `clipboard,history,paste,copy,clipboard manager,snippets,productivity`
-- **Support URL**: any page you control (a GitHub repo README works).
-- **Privacy policy URL**: required. One paragraph on a page you control:
+- **Keywords**: `clipboard,history,paste,copy,clipboard manager,screenshot,snippets,productivity`
+- **Support URL**: any page you control (GitHub repo works).
+- **Privacy policy URL** (required): one paragraph on any page you control —
   "Pastry stores clipboard history locally on your device. No data is
-  collected, transmitted, or shared." (GitHub Pages or a gist link is fine.)
+  collected, transmitted, or shared."
+- **App Privacy** section: select **Data Not Collected**.
+- **Pricing**: Free is the easy first release (PasteNow charges ~$10 one-time,
+  Paste is subscription — there is a market if you want to charge later).
 
-## 5. Fill in App Privacy
+## Upload & submit
 
-App Store Connect → App Privacy → **Data Not Collected**. This is accurate:
-everything stays in `~/Library/Application Support/Pastry/` (in the sandbox,
-under the app container). Users notice and love this label on a clipboard app.
-
-## 6. Pricing & availability
-
-Pricing section → pick Free (or a price tier). Clipboard managers do sell —
-Paste is subscription, PasteNow is ~$10 one-time — but free is the easy
-first release.
-
-## 7. Archive and upload
-
-1. In Xcode: select **Any Mac** as the destination → Product → **Archive**.
-2. Organizer opens → Distribute App → **App Store Connect** → Upload.
-   Xcode handles signing, provisioning, and the upload in one flow.
-3. Wait ~15 minutes for processing, then the build appears under your app's
-   version in App Store Connect. (TestFlight is available here too if you
-   want beta testers first.)
-
-## 8. Submit for review
-
-1. Select the processed build on the version page.
-2. **App Review notes** — paste something like:
+1. `./archive.sh` → produces `build/appstore/Pastry.pkg`.
+2. Upload with the **Transporter** app (free on the Mac App Store) — drag the
+   .pkg in — or use Xcode Organizer's Distribute flow instead.
+3. In App Store Connect, select the processed build, then paste this into
+   **App Review notes**:
 
    > Pastry is a clipboard history manager (a Windows Win+V equivalent).
    > It requests Accessibility permission solely to synthesize a single ⌘V
@@ -120,26 +81,38 @@ first release.
    > To test: launch Pastry (menu bar icon appears), copy a few pieces of
    > text, press ⌘⇧V, choose an item.
 
-3. Submit. First reviews typically take 1–3 days.
+4. Submit. First reviews typically take 1–3 days.
 
-## 9. Common rejection reasons (and the fix)
+## Known sandbox caveats (be upfront in review notes if asked)
+
+- **Auto-paste** needs user-granted Accessibility. Established store apps
+  (Paste, PasteNow) ship this; the key is degrading gracefully, which Pastry
+  does (copy-only without the permission).
+- **Screenshot pickup** reads new files from the screenshot folder (usually
+  Desktop). In the sandboxed build this triggers the standard macOS
+  files-access consent; if the user declines, screenshots taken with
+  ⌃⌘⇧4 (copy-to-clipboard) are still captured via the clipboard. If review
+  pushes back, ship v1 with the file watcher behind an opt-in setting.
+
+## Common rejection reasons (and the fix)
 
 | Risk | Mitigation |
 |---|---|
-| Guideline 2.4.5 — sandbox violations | Keep App Sandbox on; we use no restricted APIs beyond CGEventPost-with-consent |
-| Guideline 5.1.1 — permission purpose unclear | The review notes above; consider an in-app explainer window before the Accessibility prompt |
-| Crashes on reviewer's machine | Test a clean build on a second user account before submitting |
+| 2.4.5 — sandbox violations | Sandbox is on; no restricted APIs beyond consent-gated CGEventPost |
+| 5.1.1 — unclear permission purpose | The review notes above; optionally add an in-app explainer before the prompt |
+| Crashes on reviewer's machine | Test a clean build on a second user account first |
 | Metadata mismatch | Screenshots must show the actual current UI |
 
-## Alternative: skip the App Store
+## Alternative: skip the App Store entirely
 
-For a menu-bar utility like this, direct distribution is genuinely easier and
-removes all sandbox/review constraints:
+Direct distribution avoids the sandbox and review:
 
-1. Get a **Developer ID Application** certificate (same $99 program).
-2. `codesign --deep --options runtime -s "Developer ID Application: Your Name" Pastry.app`
-3. Notarize: zip the app, `xcrun notarytool submit Pastry.zip --keychain-profile <profile> --wait`,
-   then `xcrun stapler staple Pastry.app`.
-4. Distribute the zip/dmg from a website or GitHub Releases.
+```sh
+codesign --deep --options runtime -s "Developer ID Application: Asray Gopa" build/Pastry.app
+ditto -c -k --keepParent build/Pastry.app Pastry.zip
+xcrun notarytool submit Pastry.zip --keychain-profile <profile> --wait
+xcrun stapler staple build/Pastry.app
+```
 
-Many successful clipboard managers (Maccy, for years) shipped exactly this way.
+(Requires a Developer ID Application certificate — create it in Xcode's
+Accounts settings → Manage Certificates.) Maccy shipped this way for years.

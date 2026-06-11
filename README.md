@@ -7,6 +7,10 @@ Press **⌘⇧V** anywhere to see everything you've copied and paste any of it b
 ## Usage
 
 - Copy things as usual (⌘C). Text and images are recorded automatically.
+- Take a screenshot (⌘⇧3/⌘⇧4) and it's placed on the clipboard immediately —
+  just ⌘V to paste it, and it's in your history like everything else
+  (matches Win+Shift+S behavior). Oversized Retina captures are downscaled
+  to fit the 4 MB history cap instead of being dropped.
 - Press **⌘⇧V** to open the history panel near your cursor.
 - **↑/↓** to select, **↩** to paste into the app you were in, or just click an item.
 - **P** pins an item (pinned items survive "Clear All" and never age out), **⌫** deletes, **esc** closes.

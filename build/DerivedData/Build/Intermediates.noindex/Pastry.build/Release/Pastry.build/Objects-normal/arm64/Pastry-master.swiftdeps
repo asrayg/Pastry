@@ -1,0 +1,15 @@
+version: "Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)"
+options: "05dd1ef28c975ee6282206bd95a0d9ccd5c90d0d550a5e22b08264ace56e0789"
+build_start_time: [1781076263, 763231000]
+build_end_time: [1781076310, 808173000]
+inputs:
+  "/Users/asray/copypaste/Sources/Pastry/AppDelegate.swift": [1781076176, 953315433]
+  "/Users/asray/copypaste/Sources/Pastry/ClipItem.swift": [1781074001, 79421902]
+  "/Users/asray/copypaste/Sources/Pastry/ClipboardMonitor.swift": [1781076197, 990772103]
+  "/Users/asray/copypaste/Sources/Pastry/HistoryStore.swift": [1781074599, 723965291]
+  "/Users/asray/copypaste/Sources/Pastry/HistoryView.swift": [1781074565, 788592156]
+  "/Users/asray/copypaste/Sources/Pastry/HotKey.swift": [1781074015, 509883268]
+  "/Users/asray/copypaste/Sources/Pastry/PanelController.swift": [1781074582, 364478275]
+  "/Users/asray/copypaste/Sources/Pastry/Paster.swift": [1781074040, 358051367]
+  "/Users/asray/copypaste/Sources/Pastry/ScreenshotWatcher.swift": [1781076166, 52357098]
+  "/Users/asray/copypaste/Sources/Pastry/main.swift": [1781074091, 992522833]

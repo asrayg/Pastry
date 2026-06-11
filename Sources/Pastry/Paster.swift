@@ -3,23 +3,28 @@ import ApplicationServices
 import Carbon // for kVK_ANSI_V
 
 enum Paster {
-    /// Puts the item on the pasteboard, then synthesizes ⌘V into the frontmost app.
-    /// Falls back to copy-only if accessibility permission hasn't been granted.
-    static func paste(_ item: ClipItem, monitor: ClipboardMonitor) {
+    /// Writes the item to the pasteboard, refocuses the source app, then synthesizes ⌘V.
+    /// Falls back to clipboard-only if Accessibility permission hasn't been granted.
+    static func paste(_ item: ClipItem, monitor: ClipboardMonitor, into targetApp: NSRunningApplication?) {
         let pb = NSPasteboard.general
         monitor.ignoreNextChange = true
-        pb.clearContents()
         switch item.content {
         case .text(let s):
+            pb.clearContents()
             pb.setString(s, forType: .string)
         case .image(let data):
-            pb.setData(data, forType: .png)
+            pb.setImagePNG(data)
         }
 
         guard AXIsProcessTrusted() else { return }
-        // Small delay so the panel has fully dismissed and focus is back on the target app.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
-            sendCmdV()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            if let app = targetApp, !app.isActive {
+                app.activate(options: .activateIgnoringOtherApps)
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.08) {
+                sendCmdV()
+            }
         }
     }
 
@@ -32,5 +37,17 @@ enum Paster {
         up.flags = .maskCommand
         down.post(tap: .cghidEventTap)
         up.post(tap: .cghidEventTap)
+    }
+}
+
+extension NSPasteboard {
+    /// Writes an image as both TIFF and PNG — apps disagree on which they read
+    /// (TextEdit/Pages/Mail want TIFF, web apps tend to want PNG).
+    func setImagePNG(_ png: Data) {
+        declareTypes([.tiff, .png], owner: nil)
+        if let tiff = NSImage(data: png)?.tiffRepresentation {
+            setData(tiff, forType: .tiff)
+        }
+        setData(png, forType: .png)
     }
 }

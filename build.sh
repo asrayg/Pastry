@@ -22,7 +22,11 @@ cp .build/release/Pastry "$APP/Contents/MacOS/Pastry"
 cp Info.plist "$APP/Contents/Info.plist"
 cp Resources/AppIcon.icns "$APP/Contents/Resources/AppIcon.icns"
 
-# Ad-hoc sign so the Accessibility permission grant persists across rebuilds.
-codesign --force --sign - "$APP"
+# Sign with real Developer cert so Accessibility permission survives across rebuilds.
+codesign --force --sign "Apple Development: Asray Gopa (WA35DM5HM3)" "$APP"
 
-echo "Built $APP"
+# Install to /Applications so the permission is tied to a stable path.
+pkill -f "Applications/Pastry.app/Contents/MacOS/Pastry" 2>/dev/null || true
+cp -R "$APP" /Applications/Pastry.app
+echo "Installed /Applications/Pastry.app"
+open /Applications/Pastry.app

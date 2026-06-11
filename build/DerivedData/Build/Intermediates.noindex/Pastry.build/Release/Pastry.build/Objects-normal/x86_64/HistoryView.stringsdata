@@ -1,0 +1,52 @@
+{
+  "source": "/Users/asray/copypaste/Sources/Pastry/HistoryView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Pastry"
+      },
+      {
+        "comment": "",
+        "key": "%lld item%@"
+      },
+      {
+        "comment": "",
+        "key": "Remove everything except pinned items"
+      },
+      {
+        "comment": "",
+        "key": "Clear All"
+      },
+      {
+        "comment": "",
+        "key": "Nothing here yet"
+      },
+      {
+        "comment": "",
+        "key": "Copy some text or images and they'll\nshow up here, ready to paste anytime."
+      },
+      {
+        "comment": "",
+        "key": "Image"
+      },
+      {
+        "comment": "",
+        "key": "·"
+      },
+      {
+        "comment": "",
+        "key": "Unpin"
+      },
+      {
+        "comment": "",
+        "key": "Pin"
+      },
+      {
+        "comment": "",
+        "key": "Delete"
+      }
+    ]
+  },
+  "version": 1
+}
