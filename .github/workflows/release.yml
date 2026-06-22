@@ -1,0 +1,92 @@
+name: Release to App Store
+
+# Builds Pastry, archives it, and uploads it straight to App Store Connect.
+# Uses cloud-managed automatic signing (no certificates stored in the repo):
+# -allowProvisioningUpdates + an App Store Connect API key let Xcode create and
+# manage the distribution cert and provisioning profile on the fly.
+#
+# Triggers:
+#   - Pushing a tag like v1.0.3
+#   - Manual "Run workflow" button (workflow_dispatch)
+#
+# Required repository secrets (same key works across the team's apps):
+#   ASC_API_KEY_P8   contents of the App Store Connect API key .p8 file
+#   ASC_KEY_ID       the API key's Key ID
+#   ASC_ISSUER_ID    the API key's Issuer ID
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-upload:
+    runs-on: macos-15
+    timeout-minutes: 45
+
+    env:
+      PROJECT: Pastry.xcodeproj
+      SCHEME: Pastry
+      TEAM_ID: L6LUXM357X
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest stable Xcode
+        run: |
+          XC=$(ls -d /Applications/Xcode_*.app 2>/dev/null | sort -V | tail -1)
+          if [ -n "$XC" ]; then sudo xcode-select -s "$XC/Contents/Developer"; fi
+          xcodebuild -version
+
+      - name: Write App Store Connect API key
+        env:
+          ASC_API_KEY_P8: ${{ secrets.ASC_API_KEY_P8 }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/keys"
+          printf '%s' "$ASC_API_KEY_P8" > "$RUNNER_TEMP/keys/AuthKey.p8"
+          echo "AUTH_KEY_PATH=$RUNNER_TEMP/keys/AuthKey.p8" >> "$GITHUB_ENV"
+
+      - name: Archive
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          xcodebuild archive \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -configuration Release \
+            -destination "generic/platform=macOS" \
+            -archivePath "$RUNNER_TEMP/Pastry.xcarchive" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$AUTH_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            CODE_SIGN_STYLE=Automatic \
+            DEVELOPMENT_TEAM="$TEAM_ID"
+
+      - name: Export & upload to App Store Connect
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/Pastry.xcarchive" \
+            -exportPath "$RUNNER_TEMP/export" \
+            -exportOptionsPlist .github/ExportOptions-ci.plist \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$AUTH_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+
+      - name: Upload build output on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: ${{ runner.temp }}/export
+          if-no-files-found: ignore
