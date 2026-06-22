@@ -17,6 +17,7 @@
 		B10000000000000000000008 /* Paster.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000008 /* Paster.swift */; };
 		B10000000000000000000009 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000009 /* main.swift */; };
 		B10000000000000000000011 /* ScreenshotWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000010 /* ScreenshotWatcher.swift */; };
+		B10000000000000000000012 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000011 /* ColorScheme.swift */; };
 		B10000000000000000000010 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001 /* AppIcon.icns */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		A10000000000000000000008 /* Paster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paster.swift; sourceTree = "<group>"; };
 		A10000000000000000000009 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A10000000000000000000010 /* ScreenshotWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotWatcher.swift; sourceTree = "<group>"; };
+		A10000000000000000000011 /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		A20000000000000000000001 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		A20000000000000000000002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A20000000000000000000003 /* Pastry.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Pastry.entitlements; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				A10000000000000000000001 /* AppDelegate.swift */,
+				A10000000000000000000011 /* ColorScheme.swift */,
 				A10000000000000000000002 /* ClipItem.swift */,
 				A10000000000000000000003 /* ClipboardMonitor.swift */,
 				A10000000000000000000004 /* HistoryStore.swift */,
@@ -171,6 +174,7 @@
 				B10000000000000000000007 /* PanelController.swift in Sources */,
 				B10000000000000000000008 /* Paster.swift in Sources */,
 				B10000000000000000000011 /* ScreenshotWatcher.swift in Sources */,
+				B10000000000000000000012 /* ColorScheme.swift in Sources */,
 				B10000000000000000000009 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
