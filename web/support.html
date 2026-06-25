@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — Pastry</title>
+  <meta name="description" content="Help, FAQ, and contact for Pastry, the clipboard history app for macOS." />
+  <meta name="theme-color" content="#FBF8F4" />
+  <link rel="canonical" href="https://pastry.asraygopa.com/support" />
+  <link rel="icon" href="/assets/icons/favicon-32.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container">
+      <a class="brand" href="/">
+        <img src="/assets/icons/icon-192.png" alt="" width="26" height="26" />
+        Pastry
+      </a>
+      <nav class="nav">
+        <a class="navlink" href="/#features">Features</a>
+        <a class="navlink" href="/#shortcuts">Shortcuts</a>
+        <a class="navlink" href="/privacy">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="doc">
+    <div class="container">
+      <h1>Support</h1>
+      <p class="updated">We're glad to help. Most questions are answered below — and a real person reads every email.</p>
+
+      <div class="callout">
+        <p><strong>Contact:</strong> Email <a class="link" href="mailto:asraygopa@gmail.com">asraygopa@gmail.com</a>
+        with your macOS version and a short description of what happened. We aim to reply within a couple of days.</p>
+      </div>
+
+      <h2>Getting started</h2>
+      <p>Copy things the way you always do with <kbd>⌘</kbd><kbd>C</kbd>. Pastry quietly records text and
+      images as you go. When you need something back, press <kbd>⌘</kbd><kbd>⇧</kbd><kbd>V</kbd> to open the
+      history panel near your cursor, use <kbd>↑</kbd><kbd>↓</kbd> to choose an item, and press <kbd>↩</kbd>
+      to paste it into whatever app you were using — or just click it.</p>
+
+      <h2>Frequently asked questions</h2>
+      <dl class="faq">
+        <dt>Why does Pastry ask for Accessibility access?</dt>
+        <dd>Accessibility permission lets Pastry synthesize the single <kbd>⌘</kbd><kbd>V</kbd> keystroke that
+        pastes your chosen item back into the app you were using. If you decline, Pastry still works — it copies
+        the item to your clipboard and you press <kbd>⌘</kbd><kbd>V</kbd> yourself. To enable it later, open the
+        menu bar icon → <em>Enable Auto-Paste…</em>, or System Settings → Privacy &amp; Security → Accessibility.</dd>
+
+        <dt>Where is my clipboard history stored?</dt>
+        <dd>In a single file on your Mac at
+        <code>~/Library/Application&nbsp;Support/Pastry/history.json</code>. Nothing is uploaded anywhere.</dd>
+
+        <dt>How much history does Pastry keep?</dt>
+        <dd>The 25 most recent items, matching Windows' clipboard history. Pinned items don't count toward that
+        limit and never expire. Items larger than 4&nbsp;MB are skipped.</dd>
+
+        <dt>How do I pin, delete, or clear items?</dt>
+        <dd>With an item selected, press <kbd>P</kbd> to pin or unpin and <kbd>⌫</kbd> to delete. “Clear All”
+        in the panel removes everything except your pinned items. The menu bar icon also has a Clear History
+        option.</dd>
+
+        <dt>Does Pastry capture passwords?</dt>
+        <dd>No. Pastry honors the standard macOS markers that password managers and other apps use to flag
+        content as concealed or transient, and skips those items.</dd>
+
+        <dt>Can Pastry launch automatically?</dt>
+        <dd>Yes — open the menu bar icon and toggle <em>Start at Login</em>.</dd>
+
+        <dt>How do I uninstall it?</dt>
+        <dd>Quit Pastry from the menu bar, move the app to the Trash, and optionally delete the
+        <code>~/Library/Application&nbsp;Support/Pastry</code> folder.</dd>
+
+        <dt>What are the system requirements?</dt>
+        <dd>macOS 13 (Ventura) or later.</dd>
+      </dl>
+
+      <h2>Still stuck?</h2>
+      <p>Email <a class="link" href="mailto:asraygopa@gmail.com">asraygopa@gmail.com</a> and we'll sort it out.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="legal">
+        <span>© 2026 Pastry. Made for macOS 13 and later.</span>
+        <span><a href="/">Home</a> &nbsp;·&nbsp; <a href="/privacy">Privacy Policy</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
